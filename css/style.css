@@ -96,7 +96,7 @@ img {
 	padding-bottom: 3%;
 }
 
-.item-bio{
+.container-bio{
 	background-color: lightgray;
 	width: 30%;
 	left: 10%;
@@ -106,9 +106,11 @@ img {
 	border-radius: 25px;
 }
 
-.item-bio h1{
+.container-bio h1{
 	text-align: center;
 }
+
+.item-education
 
 .item {
 	width: 100%;
