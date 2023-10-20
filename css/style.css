@@ -12,12 +12,16 @@ body {
 	color: black;
 	background-color: purple;
 }
+
+h1 {
+	font-size: 30px;
+}
+
 /* Main Menu */
 #main-menu {
 	background-color: rgba(92, 92, 92, 0.6);
 	position: fixed;
 	width: 100%;
-	top: 0px;
 	z-index: 10;
 	border-bottom: 1px solid grey;
 	transition: top 0.3s;
@@ -49,70 +53,61 @@ body {
 }
 
 img {
-	width: 10%;
-	display: inline-block;
+	width: 100%;
+	background-color: aqua;
 }
 
-/* Page Split */
 .split-container {
+	padding-top: 7.4%;
+	border-bottom: 1px solid grey;
 	background-color: red;
 	display: flex;
-	
 }
 
-.split {
-	flex: 1;
-	padding-left: 30px;
+.item-bio{
+	background-color: grey;
+	width: 30%;
+	top: 13%;
+	left: 10%;
+	right: 5%;
+	position: fixed;
+	padding: 1%;
+	border-radius: 25px;
+
 }
 
-.split:first-child p {
-	color: #444444;
-	font-size: 30px;
-	line-height: initial;
-}
-
-/* QUOTES */
-.container-quote {
-	display: flex;
-	color: #444444;
-	font-size: 1.2em;
-}
-
-.item-quote {
-	width: 800px;
-	/* A fixed width as the default */
-}
-
-.item-center-quote {
-	flex-grow: 1;
-	/* Set the middle element to grow and stretch */
-	background-color: white;
-	text-shadow: rgba(0, 0, 0, 0.5) 0.5px 0.5px 0;
-	z-index: 4;
-}
-
-.item-center p {
-	font-size: 30px;
-}
-
-.quote h1 {
-	line-height: 1em;
+.item-bio h1{
 	text-align: center;
-	font-size: 3em;
-	font-weight: 100;
-	margin-top: 2.5em;
-	margin-bottom: 2.5em;
+	padding-bottom: 30px;
+	border-bottom: 2px solid black;
 }
 
-.quote p {
-	padding: 160px 60px 160px 60px;
-	font-size: 22px;
-	line-height: 36px;
-	text-align: center;
-}
-
-.right {
+.item {
 	background-color: pink;
+	width: 100%;
+	padding-left: 48%;
+	justify-content: center;
+}
+
+.item-blank{
+	background-color: brown;
+	width: 15%;
+}
+
+.item-blank-middle{
+	background-color: yellow;
+	width: 10%;
+}
+
+.logos {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+.logo {
+	width: 10%;
+	padding-left: 5%;
 }
 
 /* Page Footer */
