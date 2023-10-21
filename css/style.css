@@ -3,56 +3,24 @@
 	padding: 0;
 	font-size: 90%;
 	scroll-behavior: smooth;
-	font-family: "Times New Roman", sans-serif;
+	/* font-family: "Times New Roman", sans-serif; */
+	font-family: "Lato", sans-serif;
 	font-size: 18px;
 	line-height: 1.5em;
+	
 }
 
 body {
-	background-color: #a9a9a9;
-	margin-top: 5%;
-	
+	/* margin-top: 5%; */
+	color: #737373;
 }
 
 h1 {
 	font-size: 30px;
 	padding-bottom: 15px;
-	border-bottom: 2px solid grey;
+	border-bottom: 2px solid #323B4C;
 	margin-bottom: 15px;
-}
-
-/* Main Menu */
-#main-menu {
-	background-color: rgba(92, 92, 92, 0.6);
-	position: fixed;
-	width: 100%;
-	z-index: 10;
-	border-bottom: 1px solid grey;
-	transition: top 0.3s;
-	font-size: 23px;
-}
-
-#main-menu ul {
-	padding: 0.5em 0;
-	text-align: center;
-	display: flex;
-	justify-content: center;
-}
-
-#main-menu li {
-	list-style: none;
-	padding: 0.1em 0.5em;
-}
-
-#main-menu a {
-	display: block;
-
-	text-decoration: none;
-	padding: 0.25em 1em;
-	border-radius: 3px;
-	text-shadow: rgba(0, 0, 0, 0.5) 0 1px 0;
-	display: inline-block;
-	position: relative;
+	color: #323B4C;
 }
 
 .shortcuts {
@@ -78,7 +46,7 @@ h1 {
 	display: block;
 	font-size: 25px;
 	text-decoration: none;
-	color: black;
+	color: white;
 	padding: 0.25em 1em;
 	border-radius: 3px;
 	display: inline-block;
@@ -89,32 +57,50 @@ img {
 	width: 100%;
 }
 
-.container {
+.profile {
+	width: 60%;
+	border-radius: 50%;
+}
+
+.container-profile {
+	padding-top: 30%;
 	display: flex;
+	justify-content: center;
+}
+
+.container {
 	padding-right: 5%;
 	padding-bottom: 3%;
 }
 
 .container-bio{
-	background-color: lightgray;
+	color: white;
+	background-color: #323B4C;
+	height: 100%;
 	width: 30%;
-	left: 10%;
-	right: 5%;
 	position: fixed;
 	padding: 1%;
-	border-radius: 25px;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
 }
 
 .container-bio h1{
+	font-size: 38px;
+	letter-spacing: 3px;
 	text-align: center;
+	border-bottom: 2px solid white;
+	color: white;
 }
-
-
 
 .item {
 	width: 100%;
-	padding-left: 48%;
+	padding-left: 38%;
 	justify-content: center;
+}
+
+.container-education {
+	padding-left: 20%;
 }
 
 .logos {
