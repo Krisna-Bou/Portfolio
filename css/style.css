@@ -82,7 +82,7 @@ img {
 .container {
 	padding-top: 2%;
 	padding-right: 5%;
-	padding-bottom: 3%;
+	padding-bottom: 1%;
 }
 
 .container-bio{
@@ -108,9 +108,24 @@ img {
 }
 
 .item {
-	width: 100%;
+	width: 65%;
 	padding-left: 38%;
-	justify-content: center;
+}
+
+.item-skills {
+	width: 65%;
+	padding-left: 38%;
+	font-size: 30px;
+}
+
+.item-skills p{
+	font-weight: 600;
+	color: #323B4C;
+}
+
+
+.item-skills ul {
+	padding-left: 2%;
 }
 
 .container-education {
@@ -119,6 +134,7 @@ img {
 
 .container-education p{
 	padding-left: 10%;
+	padding-bottom: 5px;
 	font-weight: 300;
 }
 
