@@ -3,7 +3,7 @@
 	padding: 0;
 	font-size: 90%;
 	scroll-behavior: smooth;
-	/* font-family: "Times New Roman", sans-serif; */
+	font-family: "Times New Roman", sans-serif;
 	font-family: "Lato", sans-serif;
 	font-size: 18px;
 	line-height: 1.5em;
@@ -11,7 +11,6 @@
 }
 
 body {
-	/* margin-top: 5%; */
 	color: #737373;
 }
 
@@ -24,13 +23,13 @@ h1 {
 }
 
 .shortcuts {
+	padding-left: 10%;
 	width: 100%;
 	font-size: 23px;
 }
 
 .shortcuts ul {
-	padding: 0.5em 0;
-	text-align: center;
+	text-align: left;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
@@ -38,16 +37,15 @@ h1 {
 
 .shortcuts li {
 	list-style: none;
-	padding: 0.1em 0.5em;
 }
 
 .shortcuts a {
 	font-weight: 800;
 	display: block;
-	font-size: 25px;
+	font-size: 20px;
 	text-decoration: none;
 	color: white;
-	padding: 0.25em 1em;
+	padding: 0.1em;
 	border-radius: 3px;
 	display: inline-block;
 	position: relative;
@@ -57,18 +55,32 @@ img {
 	width: 100%;
 }
 
+.icon {
+	padding-left: 2%;
+	width: 5%;
+	height: 5%;
+	padding-top: 1%;
+}
+
+.resume a{
+	color: white;
+	display: flex;
+	justify-content: center;
+	text-decoration: none;
+}
+
 .profile {
-	width: 60%;
+	width: 50%;
 	border-radius: 50%;
 }
 
 .container-profile {
-	padding-top: 30%;
 	display: flex;
 	justify-content: center;
 }
 
 .container {
+	padding-top: 2%;
 	padding-right: 5%;
 	padding-bottom: 3%;
 }
@@ -77,7 +89,7 @@ img {
 	color: white;
 	background-color: #323B4C;
 	height: 100%;
-	width: 30%;
+	width: 32%;
 	position: fixed;
 	padding: 1%;
 	display: flex;
@@ -86,11 +98,13 @@ img {
 }
 
 .container-bio h1{
-	font-size: 38px;
-	letter-spacing: 3px;
+	font-size: 30px;
+	letter-spacing: 2px;
 	text-align: center;
 	border-bottom: 2px solid white;
 	color: white;
+	padding-bottom: 3px;
+	margin-bottom: 5px;
 }
 
 .item {
@@ -100,13 +114,19 @@ img {
 }
 
 .container-education {
-	padding-left: 20%;
+	border-bottom: 2px solid white;
+}
+
+.container-education p{
+	padding-left: 10%;
+	font-weight: 300;
 }
 
 .logos {
 	width: 100%;
 	display: flex;
 	justify-content: center;
+	padding-top: 1%;
 }
 
 .logo {
@@ -116,6 +136,11 @@ img {
 	position: relative;
 }
 
+.degree {
+	font-weight: 600;
+	letter-spacing: 1px;
+	font-size: 20px;
+}
 
 a:after {
 	background: none repeat scroll 0 0 transparent;
@@ -133,13 +158,4 @@ a:after {
 a:hover:after {
 	width: 100%;
 	left: 0;
-}
-
-.link {
-	font-size: 20px;
-	color: #6b6b6b;
-	text-decoration: none;
-	display: inline-block;
-	position: relative;
-	font-weight: 800;
 }
