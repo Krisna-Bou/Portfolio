@@ -23,13 +23,13 @@ h1 {
 }
 
 .shortcuts {
-	padding-left: 10%;
+	padding-left: 0%;
 	width: 100%;
 	font-size: 23px;
 }
 
 .shortcuts ul {
-	text-align: left;
+	text-align: center;
 	display: flex;
 	justify-content: center;
 	flex-direction: column;
