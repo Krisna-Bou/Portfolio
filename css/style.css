@@ -179,12 +179,44 @@ img {
 }
 
 .project {
-  background-color: red;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  color: white;
+  background-color: #323b4c;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 25px;
 }
 
+.project {
+  margin-bottom: 20px;
+  border-radius: 20px;
+  color: white;
+  background-color: #323b4c;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 25px;
+  text-decoration: none;
+  border: 5px solid transparent;
+}
+
+.project:hover {
+  border: 5px solid #6d7e9f;
+}
+
+.project-bio {
+  width: 50%;
+  align-items: center;
+}
+
+.thumbnail {
+  width: 250px;
+}
+
+.upcoming {
+  width: 100px;
+}
 a:after {
-  background: none repeat scroll 0 0 transparent;
   bottom: 0;
   content: "";
   display: block;
