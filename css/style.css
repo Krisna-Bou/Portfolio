@@ -38,10 +38,6 @@ h1 {
   list-style: none;
 }
 
-.experience {
-  padding-bottom: 30px;
-}
-
 .shortcuts a {
   font-weight: 800;
   display: block;
@@ -52,10 +48,6 @@ h1 {
   border-radius: 3px;
   display: inline-block;
   position: relative;
-}
-
-img {
-  width: 100%;
 }
 
 .icon {
@@ -78,9 +70,35 @@ img {
   font-weight: 400;
 }
 
+img {
+  width: 100%;
+}
+
 .profile {
   width: 50%;
   border-radius: 50%;
+}
+
+.thumbnail {
+  width: 250px;
+}
+
+.upcoming {
+  width: 100px;
+}
+
+.logos {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 1%;
+}
+
+.logo {
+  width: 40px;
+  padding-left: 2.5%;
+  padding-right: 2.5%;
+  position: relative;
 }
 
 .container-profile {
@@ -158,34 +176,10 @@ img {
   font-weight: 300;
 }
 
-.logos {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  padding-top: 1%;
-}
-
-.logo {
-  width: 40px;
-  padding-left: 2.5%;
-  padding-right: 2.5%;
-  position: relative;
-}
-
 .degree {
   font-weight: 600;
   letter-spacing: 1px;
   font-size: 24px;
-}
-
-.project {
-  margin-bottom: 20px;
-  border-radius: 20px;
-  color: white;
-  background-color: #323b4c;
-  display: flex;
-  justify-content: space-evenly;
-  padding: 25px;
 }
 
 .project {
@@ -209,13 +203,10 @@ img {
   align-items: center;
 }
 
-.thumbnail {
-  width: 250px;
+.experience {
+  padding-bottom: 20px;
 }
 
-.upcoming {
-  width: 100px;
-}
 a:after {
   bottom: 0;
   content: "";
