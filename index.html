@@ -6,51 +6,87 @@
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/style.css" rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
   </head>
+  
 
   <body>
 
+
     <div class="site-wrapper">
+      <div class="site-wrapper-inner" id="vanta-canvas">
 
-      <div class="site-wrapper-inner">
 
-        <div class="cover-container">
 
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">Krisna Bou | Portfolio</h3>
-              <nav>
-                <ul class="nav masthead-nav">
-                  <li><a href="#about">About</a></li>
-                  <li><a href="#skills">Skills</a></li>
-                  <li><a href="#contact">Contact</a></li>
-                </ul>
-              </nav>
+
+          <div class="cover-container" >
+            <div class="masthead clearfix">
+              <div class="inner">
+                <h3 class="masthead-brand">Krisna Bou | Portfolio</h3>
+                <nav>
+                  <ul class="nav masthead-nav" >
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                  </ul>
+                </nav>
+              </div>
+            </div>
+            <div class="inner cover" >
+              <h1 class="cover-heading">Hi, I'm <span style="color:#8126B9">Krisna</span></h1>
+              <h2 class="lead">Software Engineering student, tech enthusiast, and avid learner.</p>
             </div>
           </div>
+          <div class="scroll">
+            <div id="scroll-down">
+              <span class="arrow-down">
+              </span>
+            </div>
+        </div>
+      </div>
+    </div>
 
-          <div class="inner cover">
+
+    <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container" >
+          <div class="inner cover" >
             <h1 class="cover-heading">Hi, I'm Krisna</h1>
-            <h2 class="lead">I am an aspiring entrepreneur, tech enthusiest, and avid learner</p>
+            <h2 class="lead">Software Engineering student, tech enthusiast, and avid learner</p>
           </div>
+
 
           <div class="mastfoot">
             <div class="inner">
-              <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+              <p>References available upon request</p>
             </div>
           </div>
-
         </div>
-
       </div>
-
     </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+
+    <script>
+      VANTA.NET({
+        el: "#vanta-canvas",
+        mouseControls: false,
+        touchControls: false,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: 0x8126B9,
+        backgroundColor: 0x09091B,
+        points: 15.00,
+        spacing: 20.00
+      })
+      </script>
+
     <script src="js/bootstrap.min.js"></script>
   </body>
 </html>
