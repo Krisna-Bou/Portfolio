@@ -22,6 +22,24 @@ a:hover:after {
   left: 0;
 }
 
+#grad {
+  background-color: #8126B9;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin-top: 110px;
+}
+
+#line {
+  background-image: linear-gradient(to bottom,#8126B9, rgba(255,0,0,0));
+  width: 3px;
+  height: 300px;
+  top: 1px;
+  margin-left:auto;
+  margin-right: auto;
+  border-radius: 5em, 5em, 5em, 5em;
+}
+
 /*
  * Base structure
  */
@@ -30,12 +48,10 @@ body {
   height: 100%;
   background-color: #09091B;
   font-family: Poppins, sans-serif;
-}
-
-body {
-  color: #fff;
+  font-size: 17px;
+  line-height: 1.8;
+  color: white;
   text-align: center;
-
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -58,8 +74,13 @@ body {
 /* Padding for spacing */
 .inner {
   padding: 30px;
+  padding-left: 5px;
 }
 
+.inner p {
+  color: #AAA6C3;
+  width: 50%;
+}
 
 /*
  * Header
@@ -97,6 +118,7 @@ body {
   padding: 0 20px;
   text-shadow: none;
   text-align: left;
+  display: flex;
 }
 .cover .btn-lg {
   padding: 10px 20px;
@@ -122,7 +144,9 @@ body {
 }
 
 .scroll {
-  padding-top: 1px
+  bottom: 5%;
+  left: 50%;
+  position: absolute;
 }
 
 #scroll-down {
