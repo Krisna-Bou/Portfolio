@@ -61,6 +61,11 @@ body {
   height: 100%; /* For at least Firefox */
   min-height: 100%;
 }
+
+.site-wrapper-bio{
+  height: 80%;
+}
+
 .site-wrapper-inner {
   display: table-cell;
   vertical-align: top;
@@ -86,7 +91,10 @@ body {
  * Header
  */
  .masthead {
-  width: 300px;
+  width: 100vw;
+  height: 12%;
+  background-color: wheat;
+  z-index: 0;
  }
 
 .masthead-brand {
