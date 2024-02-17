@@ -90,18 +90,26 @@ body {
 /*
  * Header
  */
- .masthead {
-  width: 100vw;
-  height: 12%;
-  background-color: wheat;
-  z-index: 0;
+ #masthead {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #09091B;
+  margin-bottom: 15px;
+  z-index: 10000;
+  display: flex;
+  justify-content: space-evenly;
+  position: fixed;
  }
 
 .masthead-brand {
   margin-top: 10px;
-  margin-bottom: 10px;
 }
 
+.masthead-nav {
+  margin-top: 12px;
+}
 .masthead-nav > li {
   display: inline-block;
 }
@@ -109,21 +117,13 @@ body {
   margin-left: 20px;
 }
 
-@media (min-width: 768px) {
-  .masthead-brand {
-    float: left;
-  }
-  .masthead-nav {
-    float: right;
-  }
-}
 
 /*
  * Cover
  */
 
 .cover {
-  padding: 0 20px;
+  padding-top: 100px;
   text-shadow: none;
   text-align: left;
   display: flex;
@@ -217,6 +217,51 @@ body {
 	}
 }
 
+#card {
+  width: 200px;
+  height: 200px;
+  transform: scale(0.75) rotateY(-30deg) rotateX(45deg) translateZ(4.5rem);
+  transform-origin: 50% 100%;
+  transform-style: preserve-3d;
+  box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.25);
+  transition: 0.6s ease transform;
+  background: #2c2744;
+
+  &:hover {
+    transform: scale(1);
+  }
+
+  &::before,
+  &::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease;
+  }
+
+  &::before {
+    transform: translateZ(4rem);
+    border: 5px solid #f96b59;
+    &:hover {
+      transform: translateZ(0);
+    }
+  }
+
+  &::after {
+    transform: translateZ(-4rem);
+    background: #8126B9;
+    box-shadow: 1rem 1rem 2rem rgba(0, 0, 0, 0.25);
+    &:hover {
+      transform: translateZ(-1px);
+    }
+  }
+}
+
+
 /*
  * Affix and center
  */
@@ -233,7 +278,7 @@ body {
   .site-wrapper-inner {
     vertical-align: middle; /* Start the vertical centering */
   }
-  .masthead,
+
   .mastfoot,
   .cover-container {
     bottom: 20%;
@@ -242,7 +287,6 @@ body {
 }
 
 @media (min-width: 992px) {
-  .masthead,
   .mastfoot,
   .cover-container {
     width: 80%;
