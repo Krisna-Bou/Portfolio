@@ -49,7 +49,7 @@ a:hover:after {
 }
 
 .line-item {
-  height: 110vh;
+  height: 1200px;
 }
 
 #timeline {
@@ -88,6 +88,10 @@ a:hover:after {
   width: 100%;
 }
 
+#experience {
+  padding-top: 50px;
+}
+
 .experience{
   width: 70%;
   height: auto;
@@ -106,6 +110,12 @@ a:hover:after {
 .experience-right{
   float: left;
   margin-left: 50px;
+}
+
+#about.inner {
+    color: #AAA6C3;
+    width: 100%;
+  
 }
 
 /*
@@ -303,6 +313,27 @@ p {
 
 .card-logo {
   margin-top: 30px;
+}
+
+#project {
+  border-radius: 25px;
+  width: 20vw;
+  height: auto;
+  background: #231f36;
+  margin-left: 2.5%;
+}
+
+#project h3{
+  text-align: left;
+  margin-top: 5px;
+  padding-left: 2.5%;
+}
+
+.tn {
+  margin-top: 2.5%;
+  width: 95%;
+  border-radius: 25px;
+  height: auto;
 }
 
 #card {
