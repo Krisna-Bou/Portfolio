@@ -43,15 +43,13 @@ a:hover:after {
 }
 
 .grad-item {
-  background-color: #8126B9;
   margin-top: 0;
   width: 25px;
   height: 25px;
 }
 
 .line-item {
-  background-color: #8126B9;
-  height: 500px;
+  height: 110vh;
 }
 
 #timeline {
@@ -83,6 +81,7 @@ a:hover:after {
 
 .timeline-centre {
   width: 30px;
+  height: 100%;
 }
 
 .timeline-column {
@@ -114,6 +113,7 @@ a:hover:after {
  */
 html,
 body {
+  scroll-behavior: smooth;
   height: 100%;
   background-color: #09091B;
   font-family: Poppins, sans-serif;
