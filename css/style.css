@@ -318,17 +318,34 @@ p {
 #project {
   border-radius: 25px;
   width: 20vw;
-  height: auto;
+  height: 100%;
+  font-size: 14px;
+  line-height: normal;
   background: #231f36;
   margin-left: 2.5%;
 }
 
 #project h3{
   text-align: left;
+  margin-bottom: 5px;
   margin-top: 5px;
   padding-left: 2.5%;
 }
 
+#project p{
+  text-align: left;
+  margin-top: 5px;
+  padding-left: 2.5%;
+}
+
+.languages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.languages p {
+  margin-right: 5%;
+}
 .tn {
   margin-top: 2.5%;
   width: 95%;
