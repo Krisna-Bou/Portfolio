@@ -149,6 +149,12 @@ p {
   height: 80%;
 }
 
+.site-wrapper-contact{
+  padding-top: 10%;
+  background-color: blue;
+  height: 100%;
+}
+
 .site-wrapper-inner {
   display: table-cell;
   vertical-align: top;
@@ -256,6 +262,13 @@ h1.cover-heading {
   text-align: left;
   margin-top: 5px;
   padding-left: 2.5%;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
 .languages {
