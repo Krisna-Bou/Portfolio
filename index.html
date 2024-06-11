@@ -218,29 +218,73 @@
         </div>
       </div>
 
+      <?php
+
+$errors = [];
+$errorMessage = '';
+
+if (!empty($_POST)) {
+   $name = $_POST['name'];
+   $email = $_POST['email'];
+   $message = $_POST['message'];
+
+   if (empty($name)) {
+       $errors[] = 'Name is empty';
+   }
+
+   if (empty($email)) {
+       $errors[] = 'Email is empty';
+   } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+       $errors[] = 'Email is invalid';
+   }
+
+   if (empty($message)) {
+       $errors[] = 'Message is empty';
+   }
+
+   if (empty($errors)) {
+       $toEmail = 'krisna.bou@outlook.com';
+       $emailSubject = 'New email from your contact form';
+       $headers = ['From' => $email, 'Reply-To' => $email, 'Content-type' => 'text/html; charset=utf-8'];
+       $bodyParagraphs = ["Name: {$name}", "Email: {$email}", "Message:", $message];
+       $body = join(PHP_EOL, $bodyParagraphs);
+
+       if (mail($toEmail, $emailSubject, $body, $headers)) {
+
+           header('Location: thank-you.html');
+       } else {
+           $errorMessage = 'Oops, something went wrong. Please try again later';
+       }
+
+   } else {
+
+       $allErrors = join('<br/>', $errors);
+       $errorMessage = "<p style='color: red;'>{$allErrors}</p>";
+   }
+}
+
+?>
 
     <div class="site-wrapper-contact">
       <h1 id="contact">Contact</h1>
       <div class="contact-form">
-        <form action="https://formsubmit.co/krisna.bou@outlook.com" method="POST">
-          Name:<br>
-          <input type="text" name="name" required><br>
-          E-mail:<br>
-          <input type="text" name="mail" required=><br>
-          Message:<br>
-          <input type="text" name="comment" size="50" required><br><br>
+        <form action="send_email.php" method="post">
+          <label for="firstName">Name:</label>
+          <input type="text" id="firstName" name="firstName" required>
+          <br>
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required>
+          <br>
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" required></textarea>
+          <br>
           <input type="submit" value="Send">
         </form>
         <div class="grad"></div>
       </div>
     </div>
-      
     </div>
   </div>
-
-  
-
-
 
     <script>
       VANTA.NET({
@@ -261,3 +305,4 @@
     <script src="js/script.js"></script>
   </body>
 </html>
+
