@@ -183,8 +183,8 @@
               <p>The following projects serve as a testament to my diverse skill set and rich experience, providing a comprehensive showcase of my work. These endeavors not only highlight my proficiency in various areas but also demonstrate the depth of my expertise. Each project reflects not just the tasks accomplished but the valuable lessons learned and innovative solutions implemented.</p>
             </div>
         </div>
-        <div class="container-skills ">
-          <div id="project">
+        <div class="container-skills">
+          <a href="https://krisna-bou.github.io/Baiae_Imperiali/" id="project">
             <img src="images/Baiae_Imperiali.png" class="tn">
             <h3>Baiae Imperiali</h3>
             <p>Web application centered around an ancient Roman resort, offering a comprehensive booking system for diverse restaurants and hotels. Additionally, it provides informative content on the history of the Empire.</p>
@@ -193,7 +193,7 @@
               <p><span style="color:#11c1c7">#css</span></p>
               <p><span style="color:#b925a1">#javascript</span></p>
             </div>
-          </div>
+          </a>
           <div id="project">
             <img src="images/uqstem.PNG" class="tn">
             <h3>UQStem</h3>
@@ -218,126 +218,14 @@
         </div>
       </div>
 
-      <!DOCTYPE html>
-      <head>
-      <meta charset="utf-8">
-      <title>Contact form submission</title>
-      </head>
-      <body>
-      
-      
-      <?php
-      
-      $errors = [];
-      $errorMessage = '';
-      
-      if (!empty($_POST)) {
-         $name = $_POST['name'];
-         $email = $_POST['email'];
-         $message = $_POST['message'];
-      
-         if (empty($name)) {
-             $errors[] = 'Name is empty';
-         }
-      
-         if (empty($email)) {
-             $errors[] = 'Email is empty';
-         } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-             $errors[] = 'Email is invalid';
-         }
-      
-         if (empty($message)) {
-             $errors[] = 'Message is empty';
-         }
-      
-         if (empty($errors)) {
-             $toEmail = 'krisna.bou@outlook.com';
-             $emailSubject = 'New email from your contact form';
-             $headers = ['From' => $email, 'Reply-To' => $email, 'Content-type' => 'text/html; charset=utf-8'];
-             $bodyParagraphs = ["Name: {$name}", "Email: {$email}", "Message:", $message];
-             $body = join(PHP_EOL, $bodyParagraphs);
-      
-             if (mail($toEmail, $emailSubject, $body, $headers)) {
-      
-                 header('Location: thank-you.html');
-             } else {
-                 $errorMessage = 'Oops, something went wrong. Please try again later';
-             }
-      
-         } else {
-      
-             $allErrors = join('<br/>', $errors);
-             $errorMessage = "<p style='color: red;'>{$allErrors}</p>";
-         }
-      }
-      
-      ?>
-      <html>
-      <body>
-       <form  method="post" id="contact-form">
-         <h2>Contact us</h2>
-         <?php echo((!empty($errorMessage)) ? $errorMessage : '') ?>
-         <p>
-           <label>Name:</label>
-           <input name="name" type="text"/>
-         </p>
-         <p>
-           <label>Email:</label>
-           <input style="cursor: pointer;" name="email" type="text"/>
-         </p>
-         <p>
-           <label>Message:</label>
-           <textarea name="message"></textarea>
-         </p>
-         <p>
-      
-           <input type="submit" value="Send"/>
-         </p>
-       </form>
-      
-       <script src="//cdnjs.cloudflare.com/ajax/libs/validate.js/0.13.1/validate.min.js"></script>
-       <script>
-      
-      
-           const constraints = {
-               name: {
-                   presence: { allowEmpty: false }
-               },
-               email: {
-                   presence: { allowEmpty: false },
-                   email: true
-               },
-               message: {
-                   presence: { allowEmpty: false }
-               }
-           };
-      
-           const form = document.getElementById('contact-form');
-           form.addEventListener('submit', function (event) {
-      
-               const formValues = {
-                   name: form.elements.name.value,
-                   email: form.elements.email.value,
-                   message: form.elements.message.value
-               };
-      
-      
-               const errors = validate(formValues, constraints);
-               if (errors) {
-                   event.preventDefault();
-                   const errorMessage = Object
-                       .values(errors)
-                       .map(function (fieldValues) {
-                           return fieldValues.join(', ')
-                       })
-                       .join("\n");
-      
-                   alert(errorMessage);
-               }
-           }, false);
-       </script>
-      </body>
-      </html>
+      <div class="site-wrapper-bio">
+        <div class="cover-container">
+          <div id="timeline">
+            <h1 class="cover-heading" id="contact">Contact</h1>
+            
+          </div>
+        </div>
+      </div>
 
     <script>
       VANTA.NET({
