@@ -53,6 +53,7 @@ a:hover:after {
 }
 
 #timeline {
+  margin-top: 100px;
   font-size: 15px;
 }
 
@@ -89,7 +90,7 @@ a:hover:after {
 }
 
 #experience {
-  padding-top: 50px;
+  padding-top: 120px;
 }
 
 .experience{
@@ -112,6 +113,7 @@ a:hover:after {
   float: left;
   margin-left: 50px;
 }
+
 
 #about.inner {
     color: #AAA6C3;
@@ -145,7 +147,7 @@ a:hover:after {
  */
 html,
 body {
-  scroll-behavior: smooth;
+  scroll-behavior:smooth;
   height: 100%;
   background-color: #0d1b2a;
   font-family: Poppins, sans-serif;
@@ -168,6 +170,7 @@ p {
 }
 
 .site-wrapper-bio{
+  padding-top: 50px;
   height: 80%;
 }
 
