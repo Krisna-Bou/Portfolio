@@ -122,17 +122,20 @@ a:hover:after {
 }
 
 .contact-item {
-  
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  margin-top: 160px;
   padding-top: 5%;
-  padding-bottom: 30%;
+  padding-bottom: 20%;
 }
 
 .contact-centre {
   box-shadow: 0px 0px 200px 7px rgba(255,255,255,0.05);
   border-radius: 30px;
   background-color: #1b263b;
-  width:50%;
-  height: 100%;
+  width: 40%;
+  height: auto;
 }
 
 .contact-centre h1 {
