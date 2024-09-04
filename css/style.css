@@ -49,12 +49,12 @@ a:hover:after {
 }
 
 .line-item {
-  height: 1200px;
+  height: 1600px;
 }
 
 #timeline {
   margin-top: 100px;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 #timeline h2{
@@ -114,7 +114,6 @@ a:hover:after {
   margin-left: 50px;
 }
 
-
 #about.inner {
     color: #AAA6C3;
     width: 100%;
@@ -173,7 +172,6 @@ p {
 }
 
 .site-wrapper-bio{
-  padding-top: 50px;
   height: 80%;
 }
 
@@ -209,6 +207,21 @@ p {
   justify-content: space-evenly;
 }
 
+.container-volunteering {
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.volunteering-split {
+  margin-left: 3%;
+  margin-right: 2%;
+}
+
+.volunteering-date {
+  width: 70%;
+  display: flex;
+  justify-content: space-between;
+}
 /*
  * Header
  */
@@ -221,7 +234,7 @@ p {
   margin-bottom: 15px;
   z-index: 10000;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   position: fixed;
  }
 
@@ -292,6 +305,31 @@ h1.cover-heading {
   padding-left: 2.5%;
 }
 
+#volunteering {
+  border-radius: 25px;
+  width: 60%;
+  height: 100%;
+  font-size: 16px;
+  line-height: normal;
+  background: #1b263b;
+  margin-left: 2.5%;
+  box-shadow: 0px 0px 200px 7px rgba(255,255,255,0.05);
+  display: flex;
+  margin-bottom: 50px;
+  text-align: left;
+}
+
+#volunteering h2 {
+  margin-bottom: 10px;
+}
+
+#volunteering h4{
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: 100;
+  color: #AAA6C3;
+}
+
 .languages {
   display: flex;
   flex-wrap: wrap;
@@ -324,6 +362,14 @@ h1.cover-heading {
   padding-left: 2.5%;
   padding-right: 2.5%;
   position: relative;
+}
+
+.volunteering-logo {
+  width: 12%;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  margin: 2.5%;
+  margin-bottom: 1.5%;
 }
 
 .tn {
