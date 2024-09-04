@@ -235,10 +235,15 @@ p {
   background-color: #0d1b2a;
   margin-bottom: 15px;
   z-index: 10000;
-  display: flex;
-  justify-content: space-around;
   position: fixed;
  }
+
+.masthead-split {
+  padding-left: 25vw;
+  width: 50vw;
+  display: flex;
+  justify-content: space-between;
+}
 
 .masthead-brand {
   margin-top: 10px;
