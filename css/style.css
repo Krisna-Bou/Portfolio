@@ -305,7 +305,7 @@ h1.cover-heading {
   padding-left: 2.5%;
 }
 
-#volunteering {
+.volunteering {
   border-radius: 25px;
   width: 60%;
   height: 100%;
@@ -319,11 +319,10 @@ h1.cover-heading {
   text-align: left;
 }
 
-#volunteering h2 {
+.volunteering h2 {
   margin-bottom: 10px;
 }
-
-#volunteering h4{
+.volunteering h4{
   margin-top: 0;
   margin-bottom: 10px;
   font-weight: 100;
