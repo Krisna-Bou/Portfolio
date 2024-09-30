@@ -1,12 +1,12 @@
 /* Links */
-a,
+#masthead a,
 a:focus,
 a:hover {
   color: #fff;
   text-decoration: none;
 }
 
-a:after {
+#masthead a:after {
   bottom: 0;
   content: "";
   display: block;
@@ -17,7 +17,7 @@ a:after {
   width: 0;
 }
 
-a:hover:after {
+#masthead a:hover:after {
   width: 100%;
   left: 0;
 }
@@ -292,6 +292,7 @@ h1.cover-heading {
 
 .skills{
   display: flex;
+  justify-content: center;
 }
 
 .skills h2 {
@@ -373,11 +374,15 @@ box-shadow: 0px 0px 100px 15px rgba(255,255,255,0.05);
   line-height: normal;
   background: #1b263b;
   margin-left: 2.5%;
+  border: none;
+  color: #fff;
+  text-decoration: none;
   
 }
 
 .project:hover {
   box-shadow: 0px 0px 200px 7px rgba(255,255,255,0.05);
+  border: none;
 }
 
 .project h3{
@@ -414,6 +419,7 @@ box-shadow: 0px 0px 100px 15px rgba(255,255,255,0.05);
 
 .volunteering h2 {
   margin-bottom: 10px;
+  width: 100%;
 }
 .volunteering h4{
   margin-top: 0;
