@@ -1,12 +1,12 @@
 /* Links */
-#masthead a,
+.masthead-nav a,
 a:focus,
 a:hover {
   color: #fff;
   text-decoration: none;
 }
 
-#masthead a:after {
+.masthead-nav a:after {
   bottom: 0;
   content: "";
   display: block;
@@ -17,7 +17,7 @@ a:hover {
   width: 0;
 }
 
-#masthead a:hover:after {
+.masthead-nav a:hover:after {
   width: 100%;
   left: 0;
 }
@@ -35,7 +35,7 @@ a:hover {
 .line {
   background-image: linear-gradient(to bottom,#457b9d, rgba(255,0,0,0));
   width: 3px;
-  height: 300px;
+  height: 400px;
   top: 1px;
   margin-left:auto;
   margin-right: auto;
@@ -50,6 +50,21 @@ a:hover {
 
 .line-item {
   height: 1800px;
+}
+
+.logo-list {
+  display: flex;
+}
+
+.logo-icon {
+  width: 3vw;
+  margin: 2%;
+  transition: transform .2s; /* Animation */
+}
+
+
+.logo-icon:hover {
+  transform: scale(1.1);
 }
 
 #timeline {
@@ -98,7 +113,7 @@ a:hover {
   width: 70%;
   height: auto;
   border-radius: 15px;
-  background-color: #1b263b;
+  background-color: #3A7CA5;
   text-align: left;
   padding-left: 15px;
   padding-right: 20px;
@@ -171,12 +186,15 @@ html,
 body {
   scroll-behavior:smooth;
   height: 100%;
-  background-color: #0d1b2a;
-  font-family: Poppins, sans-serif;
+  background-color: white;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 17px;
   line-height: 1.8;
   color: white;
   text-align: center;
+  padding-left: 0;
+  margin: 0;
+  padding: 0;
 }
 
 p {
@@ -187,11 +205,13 @@ p {
 .site-wrapper {
   display: table;
   width: 100%;
-  height: 100%; /* For at least Firefox */
+  height: 100%; 
   min-height: 100%;
+
 }
 
 .site-wrapper-bio{
+
   height: 80%;
 }
 
@@ -210,6 +230,11 @@ p {
   margin-left: auto;  
 }
 
+.color-1 {
+  margin-top: 3%;
+  background-color: #8AACBE;
+  padding-bottom: 100px;
+}
 /* Padding for spacing */
 .inner {
   padding: 30px;
@@ -217,8 +242,9 @@ p {
 }
 
 .inner p {
-  color: #AAA6C3;
+  color: #0d1b2a;
   width: 60%;
+  font-size: 1.1em;
 }
 
 .container-skills {
@@ -253,7 +279,7 @@ p {
   height: 50px;
   background-color: #0d1b2a;
   margin-bottom: 15px;
-  z-index: 10000;
+  z-index: 100;
   position: fixed;
  }
 
@@ -266,6 +292,7 @@ p {
 
 .masthead-brand {
   margin-top: 10px;
+  font-weight: 500;
 }
 
 .masthead-nav {
@@ -276,6 +303,16 @@ p {
 }
 .masthead-nav > li + li {
   margin-left: 20px;
+}
+
+.head-links {
+  display: flex;
+  width: 10%;
+  align-items: center;
+}
+
+.head-logo {
+  width: 70%;
 }
 
 
@@ -295,18 +332,23 @@ p {
 }
 
 .cover-heading {
-  
   font-size: 80px;
   margin-bottom: 1px;
 }
 
 h1.cover-heading {
+  color: #16425B;
+
+}
+
+h1.cover-heading-title {
   color: white;
 }
 
 .skills{
   display: flex;
   justify-content: center;
+  padding-bottom: 100px;
 }
 
 .skills h2 {
@@ -357,6 +399,7 @@ box-shadow: 0px 0px 100px 15px rgba(255,255,255,0.05);
 .skills-heading {
   text-align: right;
   width: 300px;
+  color: #16425B;
 }
 
 .skills-heading h2{
@@ -503,7 +546,8 @@ box-shadow: 0px 0px 100px 15px rgba(255,255,255,0.05);
   transform-style: preserve-3d;
   box-shadow: 0px 0px 200px 7px rgba(255,255,255,0.05);
   transition: 0.6s ease transform;
-  background-color: #415a77;
+  background-color: #3A7CA5;
+  border-radius: 12px;
   justify-content: center;
   display: flex;
   flex-direction: column;
@@ -522,17 +566,11 @@ box-shadow: 0px 0px 100px 15px rgba(255,255,255,0.05);
     transition: transform 0.6s ease;
   }
 
-  &::before {
-    transform: translateZ(4rem);
-    border-image: linear-gradient(#0c9a9f, #b925a1);
-    border-image-slice: 20%;
-    border-width: 2px;
-    border-style: solid;
-  }
 
   &::after {
+    border-radius: 12px;
     transform: translateZ(-4rem);
-    background: #1b263b;
+    background: #16425b;
     &:hover {
       transform: translateZ(-1px);
     }
