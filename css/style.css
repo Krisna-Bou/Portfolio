@@ -326,7 +326,7 @@ body {
   padding: 0;
   font-weight: 300 !important;
   position: fixed;
-  overflow-y: scroll;
+  overflow-y:auto;
 }
 
 p {
@@ -872,10 +872,18 @@ h1.cover-heading-title {
     margin-left: 10%;
   }
 
+  .project-sub {
+    width: 90%;
+    padding-left: 5%;
+  }
+
 }
 
 @media (min-width: 1201px) {
-
+  .project-sub {
+    width: 75%;
+    padding-left: 12.5%;
+  }
   .contact-centre h1 {
     font-size: 48px;
   }
