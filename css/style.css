@@ -86,7 +86,7 @@ a:hover {
   margin-top: 0;
   margin-bottom: 10px;
   font-weight: 100;
-  color: #AAA6C3;
+  color: #0d1b2a;
 }
 
 #timeline-line{
@@ -120,7 +120,9 @@ a:hover {
   line-height: 1.5;
   height: auto;
   border-radius: 15px;
-  background-color: #2F6690;
+  /* background-color: #2F6690; */
+  color: #0d1b2a;
+  background: #F3F3F3;
   text-align: left;
   padding-left: 15px;
   padding-right: 20px;
@@ -178,11 +180,12 @@ a:hover {
 
 #about.inner {
     color: #AAA6C3;
-    width: 100%;
+    width: 80%;
   
 }
 
 #contact-canvas {
+  margin-top: 10%;
   padding-top: 3%;
 }
 
@@ -356,13 +359,6 @@ p {
   margin-left: 10%;  
 }
 
-
-
-.color-1 {
-  padding-bottom: 100px;
-}
-
-
 /* Padding for spacing */
 .inner {
   padding: 30px;
@@ -385,7 +381,7 @@ p {
   margin-top: 30px;
   display: block;
   justify-content: center;
-  padding-bottom: 10%;
+  padding-bottom: 3%;
 }
 
 .volunteering-split {
