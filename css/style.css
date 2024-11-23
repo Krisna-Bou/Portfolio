@@ -120,13 +120,23 @@ a:hover {
   line-height: 1.5;
   height: auto;
   border-radius: 15px;
-  /* background-color: #2F6690; */
   color: #0d1b2a;
   background: #F3F3F3;
   text-align: left;
   padding-left: 15px;
   padding-right: 20px;
   transition: box-shadow .5s;
+
+
+}
+
+.experience-left.experience{
+  border-right: 3px solid #457b9d;
+}
+
+
+.experience-right.experience{
+  border-left: 3px solid #457b9d;
 }
 
 .experience ul {
