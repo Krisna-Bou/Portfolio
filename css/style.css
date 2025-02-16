@@ -128,16 +128,12 @@ a:hover {
 }
 
 .experience-left.experience{
-  border-right: 3px solid #16425b;
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
+  border-right: none;
 }
 
 
 .experience-right.experience{
-  border-left: 3px solid #16425b;
-  border-top-right-radius: 15px;
-  border-bottom-right-radius: 15px;
+  border-left: none;
 }
 
 .experience ul {
@@ -764,6 +760,19 @@ h1.cover-heading-title {
 }
 
 @media (min-width: 751px) {
+
+  .experience-left.experience{
+    border-right: 3px solid #16425b;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+  }
+  
+  
+  .experience-right.experience{
+    border-left: 3px solid #16425b;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+  }
 
   .contact-centre {
     width: 35vw;
