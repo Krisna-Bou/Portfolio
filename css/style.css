@@ -28,15 +28,13 @@ a:hover {
   height: 15px;
   border-radius: 50%;
   margin-top: 60px;
-  margin-left:auto;
-  margin-right: auto;
 }
 
 .line {
   background-image: linear-gradient(to bottom,#457b9d, rgba(255,0,0,0));
   width: 3px;
   height: 200px;
-  top: 1px;
+  top: 100px;
   margin-left:auto;
   margin-right: auto;
   border-radius: 5em, 5em, 5em, 5em;
@@ -47,13 +45,28 @@ a:hover {
 }
 
 .grad-item {
+  display: flex;
+  justify-self: center;
+  align-self: center;
   margin-top: 0;
   width: 25px;
   height: 25px;
 }
 
 .line-item {
-  height: 1900px !important;
+  height: 100%;
+}
+
+/* Position the vertical timeline line so it overlaps timeline items */
+.line.line-item {
+  position: absolute; /* contained inside #timeline */
+  left: 50%;
+  transform: translateX(-50%);
+  top: 30px;
+  height: 100%; /* match #timeline height */
+  width: 3px; /* keep original width */
+  z-index: 2; /* adjust if you want it above/below other elements */
+  pointer-events: none; /* don't block interactions */
 }
 
 .logos-list {
@@ -76,6 +89,7 @@ a:hover {
 #timeline {
   margin-top: 100px;
   font-size: 16px;
+  position: relative;
 }
 
 #timeline h2{
@@ -103,7 +117,9 @@ a:hover {
 }
 
 .timeline-centre {
-  width: 30px;
+  width: 5%;
+  display: flex;
+  justify-content: center;
   height: 100%;
 }
 
@@ -816,9 +832,11 @@ h1.cover-heading-title {
   .grad {
     margin-top: 110px;
   }
+
   .line {
-    height: 300px;
+    height: 100%;
   }
+
   .container-volunteering {
     display: flex;
   }
