@@ -1,85 +1,94 @@
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+/* Krisna Bou — Portfolio
+ * Particle-network backgrounds (Vanta.NET) + contact form.
+ * Replaces the old js/main.js (three.js demo) and js/script.js (thpace),
+ * which were unused ES-module stubs that threw on load.
+ */
+(function () {
+  var instances = [];
 
-const renderer = new THREE.WebGLRenderer({ antialias: true });
-renderer.outputColorSpace = THREE.SRGBColorSpace;
+  var VANTA_OPTS = {
+    mouseControls: false,
+    touchControls: false,
+    gyroControls: false,
+    minHeight: 200.0,
+    minWidth: 200.0,
+    scale: 1.0,
+    scaleMobile: 1.0,
+    color: 0x3a7ca5,
+    backgroundColor: 0x16425b,
+    points: 10.0,
+    spacing: 20.0
+  };
 
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setClearColor(0x000000);
-renderer.setPixelRatio(window.devicePixelRatio);
-
-renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-
-document.body.appendChild(renderer.domElement);
-
-const scene = new THREE.Scene();
-
-const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
-camera.position.set(5, 5, 11);
-
-const controls = new OrbitControls(camera, renderer.domElement);
-controls.enableDamping = true;
-controls.enablePan = false;
-controls.minDistance = 5;
-controls.maxDistance = 20;
-controls.minPolarAngle = 0.5;
-controls.maxPolarAngle = 1.5;
-controls.autoRotate = false;
-controls.target = new THREE.Vector3(0, 1, 0);
-controls.update();
-
-const groundGeometry = new THREE.PlaneGeometry(20, 20, 32, 32);
-groundGeometry.rotateX(-Math.PI / 2);
-const groundMaterial = new THREE.MeshStandardMaterial({
-  color: 0x555555,
-  side: THREE.DoubleSide
-});
-const groundMesh = new THREE.Mesh(groundGeometry, groundMaterial);
-groundMesh.scale(2,2);
-groundMesh.castShadow = false;
-groundMesh.receiveShadow = true;
-scene.add(groundMesh);
-
-const spotLight = new THREE.SpotLight(0xffffff, 3000, 100, 0.22, 1);
-spotLight.position.set(0, 25, 0);
-spotLight.castShadow = true;
-spotLight.shadow.bias = -0.0001;
-scene.add(spotLight);
-
-const loader = new GLTFLoader().setPath('models/');
-loader.load('scene.gltf', (gltf) => {
-  console.log('loading model');
-  const mesh = gltf.scene;
-
-  mesh.traverse((child) => {
-    if (child.isMesh) {
-      child.castShadow = true;
-      child.receiveShadow = true;
+  function initVanta() {
+    if (!window.VANTA || !window.VANTA.NET) {
+      return setTimeout(initVanta, 100);
     }
+    ['#vanta-canvas', '#contact-canvas'].forEach(function (sel) {
+      var node = document.querySelector(sel);
+      if (!node || node.__vanta) return;
+      var opts = Object.assign({ el: sel }, VANTA_OPTS);
+      node.__vanta = window.VANTA.NET(opts);
+      instances.push(node);
+    });
+    // Re-measure as fonts/images settle and the layout grows, so each canvas
+    // always fills its section. This is what removes the white gap that showed
+    // at the bottom of Contact on large monitors.
+    [150, 400, 900, 1600, 2600].forEach(function (t) {
+      setTimeout(resizeVanta, t);
+    });
+  }
+
+  function resizeVanta() {
+    instances.forEach(function (node) {
+      if (node.__vanta && typeof node.__vanta.resize === 'function') {
+        node.__vanta.resize();
+      }
+    });
+  }
+
+  var raf;
+  window.addEventListener('resize', function () {
+    cancelAnimationFrame(raf);
+    raf = requestAnimationFrame(resizeVanta);
+  });
+  window.addEventListener('load', function () {
+    setTimeout(resizeVanta, 100);
   });
 
-  mesh.position.set(0, 1.05, -1);
-  scene.add(mesh);
+  // ---- Contact form (Formspree) ----
+  function wireForm() {
+    var form = document.getElementById('contact-form');
+    if (!form) return;
+    form.addEventListener('submit', async function (event) {
+      event.preventDefault();
+      var status = document.getElementById('form-status');
+      try {
+        var response = await fetch('https://formspree.io/f/xkgnbkkr', {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { Accept: 'application/json' }
+        });
+        if (response.ok) {
+          if (status) status.innerHTML = 'Message sent!';
+          form.reset();
+        } else if (status) {
+          status.innerHTML = 'Oops! Something went wrong.';
+        }
+      } catch (e) {
+        if (status) status.innerHTML = 'Error submitting the form.';
+      }
+    });
+  }
 
-  document.getElementById('progress-container').style.display = 'none';
-}, (xhr) => {
-  console.log(`loading ${xhr.loaded / xhr.total * 100}%`);
-}, (error) => {
-  console.error(error);
-});
+  function start() {
+    initVanta();
+    wireForm();
+  }
 
-window.addEventListener('resize', () => {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
-  renderer.setSize(window.innerWidth, window.innerHeight);
-});
-
-function animate() {
-  requestAnimationFrame(animate);
-  controls.update();
-  renderer.render(scene, camera);
-}
-
-animate();
+  if (document.readyState !== 'loading') {
+    start();
+  } else {
+    document.addEventListener('DOMContentLoaded', start);
+  }
+})();
