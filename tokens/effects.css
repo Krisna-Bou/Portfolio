@@ -1,0 +1,23 @@
+/* Krisna Bou Portfolio — Effects: shadows, transitions, motifs */
+
+:root {
+  /* Signature card "glow" — a large, soft gray halo on hover */
+  --shadow-glow: 0px 0px 80px 15px rgba(94, 94, 94, 0.4);
+  /* Subtle white glow used on dark panels (contact) */
+  --shadow-glow-light: 0px 0px 200px 7px rgba(255, 255, 255, 0.05);
+  /* Resting drop shadow for floating photo / buttons */
+  --shadow-drop: 0 5px 15px 0px rgba(0, 0, 0, 0.6);
+
+  /* Transitions */
+  --ease-card: box-shadow 0.5s; /* @kind other */
+  --ease-lift: transform 0.2s; /* @kind other */
+  --ease-press: 0.4s; /* @kind other */
+  --ease-underline: width 0.3s ease 0s, left 0.3s ease 0s; /* @kind other */
+
+  /* Hover scales */
+  --scale-icon: 1.05; /* @kind other */
+  --scale-image: 1.01; /* @kind other */
+
+  /* Decorative stem (dot + vertical gradient line) */
+  --stem-line: linear-gradient(to bottom, var(--stem), rgba(255,0,0,0)); /* @kind other */
+}

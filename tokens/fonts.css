@@ -1,0 +1,4 @@
+/* Krisna Bou Portfolio — Webfonts
+   Brand typeface: Poppins (geometric sans). Loaded from Google Fonts CDN.
+   NOTE: not bundled as local binaries — see readme.md "Fonts" caveat. */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');

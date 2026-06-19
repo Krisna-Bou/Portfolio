@@ -1,0 +1,9 @@
+/* Krisna Bou Portfolio — Design System global entry.
+   Consumers link this single file. It is an @import manifest only;
+   all real declarations live in the token files below. */
+
+@import url('tokens/fonts.css');
+@import url('tokens/colors.css');
+@import url('tokens/typography.css');
+@import url('tokens/spacing.css');
+@import url('tokens/effects.css');

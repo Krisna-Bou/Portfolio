@@ -1,0 +1,36 @@
+/* Krisna Bou Portfolio — Typography tokens
+   Single family (Poppins) used across display and body. Light weights for
+   body copy, semibold/bold for headings and emphasis. */
+
+:root {
+  /* Families */
+  --font-sans: 'Poppins', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+  --font-display: var(--font-sans);
+
+  /* Weights */
+  --fw-light:    300; /* @kind font */  /* body copy */
+  --fw-regular:  400; /* @kind font */
+  --fw-medium:   500; /* @kind font */  /* nav, labels, dates */
+  --fw-semibold: 600; /* @kind font */
+  --fw-bold:     700; /* @kind font */  /* headings, emphasis */
+
+  /* Type scale (display headings are fluid in use) */
+  --fs-hero:     80px;  /* hero name */
+  --fs-display:  60px;  /* section covers (≥751px) */
+  --fs-h1:       40px;  /* section covers (mobile) */
+  --fs-h2:       24px;  /* card titles (experience role) */
+  --fs-h3:       20px;  /* project titles, sub-headings */
+  --fs-lead:     20px;  /* hero subtitle */
+  --fs-body:     17px;  /* base body */
+  --fs-body-lg:  1.1em; /* intro paragraphs */
+  --fs-small:    14px;  /* tags, captions */
+
+  /* Line heights */
+  --lh-tight:  1.1; /* @kind other */
+  --lh-snug:   1.5; /* @kind other */
+  --lh-body:   1.8; /* @kind other */
+
+  /* Letter spacing */
+  --ls-tight: -0.02em; /* @kind other */
+  --ls-normal: 0; /* @kind other */
+}
