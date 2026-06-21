@@ -1,60 +1,498 @@
-<!-- @dsCard group="Portfolio" viewport="1280x760" -->
-<!-- @startingPoint section="Portfolio" subtitle="Full one-page developer portfolio" viewport="1280x900" -->
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<title>Krisna Bou | Portfolio</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="styles.css">
-<style>
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  html, body { margin: 0; padding: 0; overflow-x: hidden; background: var(--bg-page); font-family: var(--font-sans); color: var(--text-body); }
-  a { color: inherit; }
-  .timeline-spine { position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: 3px; height: 100%; background: linear-gradient(to bottom, var(--stem) 0%, var(--stem) 82%, transparent 100%); z-index: 0; pointer-events: none; }
-  .timeline-dot { position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: 25px; height: 25px; border-radius: 50%; background: var(--stem); z-index: 1; pointer-events: none; }
-  .tech-icon { transition: var(--ease-lift); }
-  .tech-icon:hover { transform: scale(var(--scale-icon)); }
-  /* Laptop render is a transparent mockup — never frame it with the accent border. */
-  img[src$="laptop.png"] { border: none !important; border-radius: 0 !important; }
-  .float-photo { animation: float 6s ease-in-out infinite; }
-  @keyframes float {
-    0%   { box-shadow: 0 5px 15px 0 rgba(0,0,0,.6); transform: translateY(0); }
-    50%  { box-shadow: 0 25px 15px 0 rgba(0,0,0,.2); transform: translateY(-20px); }
-    100% { box-shadow: 0 5px 15px 0 rgba(0,0,0,.6); transform: translateY(0); }
-  }
-  /* Animated scroll-down arrow */
-  .scroll-arrow { display:block; width:10px; height:38px; position:relative; }
-  .scroll-arrow:after { content:""; display:block; width:8px; height:8px; border-top:3px solid #fff; border-right:3px solid #fff; transform: rotate(135deg); }
-  /* Vanta network sections: guarantee the canvas fills the section and never
-     flashes white if the WebGL canvas is briefly mis-sized. */
-  #vanta-hero, #vanta-contact { background: var(--bg-network); }
-  #vanta-hero > .vanta-canvas, #vanta-contact > .vanta-canvas {
-    position: absolute !important; top: 0; left: 0;
-    width: 100% !important; height: 100% !important;
-  }
-  @media (max-width: 750px) {
-    .timeline-spine, .timeline-dot { display: none; }
-  }
-</style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-<script src="ds_bundle.js"></script>
-<script src="data.js"></script>
+  <meta charset="utf-8">
+  <title>Krisna Bou | Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="assets/favicon.ico">
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
 </head>
 <body>
-  <template id="__bundler_thumbnail">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
-      <rect width="100" height="100" fill="#16425b"/>
-      <text x="50" y="50" dy="0.35em" text-anchor="middle" font-family="Poppins, sans-serif" font-weight="700" font-size="34" fill="#a8dadc">KB</text>
-    </svg>
-  </template>
-  <div id="root"></div>
-  <script type="text/babel" src="sections.jsx"></script>
-  <script type="text/babel" src="app.jsx"></script>
+
+  <!-- ── NavBar ────────────────────────────────────────────────────── -->
+  <nav id="navbar">
+    <a href="#" class="nav-brand">Krisna Bou | Portfolio</a>
+    <ul class="nav-links">
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#experience" class="nav-link">Experience</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#vanta-contact" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-socials">
+      <a href="https://www.linkedin.com/in/krisna-bou/" aria-label="LinkedIn">
+        <img src="assets/icons/linkedin.png" alt="LinkedIn" width="22" height="22">
+      </a>
+      <a href="https://github.com/Krisna-Bou" aria-label="GitHub">
+        <img src="assets/icons/github.png" alt="GitHub" width="22" height="22">
+      </a>
+    </div>
+    <button class="burger-btn" id="burger-btn" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="mobile-menu" id="mobile-menu" hidden>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#vanta-contact">Contact</a></li>
+      </ul>
+      <div class="mobile-socials">
+        <a href="https://www.linkedin.com/in/krisna-bou/">
+          <img src="assets/icons/linkedin.png" alt="LinkedIn" width="24" height="24">
+        </a>
+        <a href="https://github.com/Krisna-Bou">
+          <img src="assets/icons/github.png" alt="GitHub" width="24" height="24">
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Hero ──────────────────────────────────────────────────────── -->
+  <header id="vanta-hero">
+    <div class="hero-content">
+      <h1>Hi, I'm <span class="hero-name">Krisna.</span></h1>
+      <h2 class="hero-sub">Tech enthusiast, and avid learner.</h2>
+    </div>
+    <a href="#about" aria-label="Scroll down" class="scroll-down">
+      <span class="scroll-arrow"></span>
+    </a>
+  </header>
+
+  <!-- ── About ─────────────────────────────────────────────────────── -->
+  <section id="about">
+    <div class="stem-row">
+      <div class="section-stem" style="--stem-h:180px" aria-hidden="true">
+        <div class="stem-dot"></div>
+        <div class="stem-line"></div>
+      </div>
+      <div class="stem-content">
+        <h1 class="section-heading">Who am I?</h1>
+        <p class="about-body">
+          Hi, I'm <b class="accent">Krisna Bou</b>, a skilled software developer with experience across many languages, frameworks and technologies. I'm a recent graduate of <b class="accent">the University of Queensland</b>, focused on opportunities to apply my passion for <b class="accent">backend systems</b>, <b class="accent">cloud services</b>, and <b class="accent">full-stack development</b>.
+          <br><br>
+          I'm a quick learner and collaborate closely with clients to create efficient, scalable, and user-friendly solutions that solve real-world problems.
+        </p>
+      </div>
+    </div>
+    <div class="tech-grid">
+      <img class="tech-icon" src="assets/tech/python.png" alt="Python">
+      <img class="tech-icon" src="assets/tech/java.png" alt="Java">
+      <img class="tech-icon" src="assets/tech/mysql.png" alt="MySQL">
+      <img class="tech-icon" src="assets/tech/javascript.png" alt="JavaScript">
+      <img class="tech-icon" src="assets/tech/html.png" alt="HTML">
+      <img class="tech-icon" src="assets/tech/css.png" alt="CSS">
+      <img class="tech-icon" src="assets/tech/docker.png" alt="Docker">
+      <img class="tech-icon" src="assets/tech/git.png" alt="Git">
+      <img class="tech-icon" src="assets/tech/web.png" alt="Web">
+    </div>
+  </section>
+
+  <!-- ── Experience ────────────────────────────────────────────────── -->
+  <section id="experience">
+    <div class="section-header-plain">
+      <h1 class="section-heading">Experience.</h1>
+    </div>
+    <div class="timeline">
+      <div class="timeline-spine" aria-hidden="true"></div>
+      <div class="timeline-top-dot" aria-hidden="true"></div>
+
+      <!-- Row 0: LEFT (card left, date right) -->
+      <div class="timeline-row left">
+        <div class="card-col">
+          <div class="card-wrapper">
+            <div class="experience-card left">
+              <h2>Associate Technical Consultant</h2>
+              <h4>Quorum Software</h4>
+              <ul>
+                <li>Delivered technical consulting services for Energy Components (EC) implementations across oil and gas clients.</li>
+                <li>Collaborated with stakeholders to gather requirements and translate them into system configurations.</li>
+                <li>Supported end-to-end deployment and validation of client solutions to ensure quality and compliance.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-row-dot" aria-hidden="true"><div></div></div>
+        <div class="date-col">
+          <div class="date-pill">Jan 2026 – Present · 6 mos</div>
+        </div>
+      </div>
+
+      <!-- Row 1: RIGHT (date left, card right) -->
+      <div class="timeline-row right">
+        <div class="date-col">
+          <div class="date-pill">Jul 2025 – Present · 9 mos</div>
+        </div>
+        <div class="timeline-row-dot" aria-hidden="true"><div></div></div>
+        <div class="card-col">
+          <div class="card-wrapper">
+            <div class="experience-card right">
+              <h2>Technology Intern (Test Coordinator)</h2>
+              <h4>Quorum Software</h4>
+              <ul>
+                <li>Contributed to projects delivering Energy Components (EC) as a service for major oil and gas clients.</li>
+                <li>Assisted in customizing EC screens and functions to meet client-specific requirements.</li>
+                <li>Performed system testing and validation of new configurations to ensure quality and compliance.</li>
+                <li>Executed and reviewed SQL database changes to support customization and maintain data integrity.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2: LEFT -->
+      <div class="timeline-row left">
+        <div class="card-col">
+          <div class="card-wrapper">
+            <div class="experience-card left">
+              <h2>Database Developer</h2>
+              <h4>UQ Pro Bono Centre</h4>
+              <ul>
+                <li>Designed and developed a web-based database system for QAI and UQ Pro Bono members to manage case records.</li>
+                <li>Enabled public access to summarized NDIS Appeals cases for analysis of national trends and jurisdictional comparisons.</li>
+                <li>Conducted user elicitation to determine needs and requirements for designed features.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-row-dot" aria-hidden="true"><div></div></div>
+        <div class="date-col">
+          <div class="date-pill">Apr 2024 – Mar 2026 · 2 yrs</div>
+        </div>
+      </div>
+
+      <!-- Row 3: RIGHT -->
+      <div class="timeline-row right">
+        <div class="date-col">
+          <div class="date-pill">Nov 2024 – Dec 2024 · 2 mos</div>
+        </div>
+        <div class="timeline-row-dot" aria-hidden="true"><div></div></div>
+        <div class="card-col">
+          <div class="card-wrapper">
+            <div class="experience-card right">
+              <h2>Student Fellow</h2>
+              <h4>Startmate</h4>
+              <ul>
+                <li>Selected as a Startmate Student Fellow in Australia's leading startup accelerator ecosystem.</li>
+                <li>Engaged with founders and operators to build skills in innovation, product thinking, and venture development.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 4: LEFT -->
+      <div class="timeline-row left">
+        <div class="card-col">
+          <div class="card-wrapper">
+            <div class="experience-card left">
+              <h2>Technology Intern</h2>
+              <h4>NFQ Asia</h4>
+              <ul>
+                <li>Implemented Google Apps Script and interfaced with APIs to automate a weekly cross-branch survey (Vietnam, Thailand, Singapore).</li>
+                <li>Reduced processing times by 50% in the automation of raw survey results and reporting.</li>
+                <li>Modularized the project to divide tasks among peers, smoothing the learning process.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-row-dot" aria-hidden="true"><div></div></div>
+        <div class="date-col">
+          <div class="date-pill">Nov 2023 – Dec 2023 · 2 mos</div>
+        </div>
+      </div>
+
+      <!-- Row 5: RIGHT -->
+      <div class="timeline-row right">
+        <div class="date-col">
+          <div class="date-pill">Jun 2023 – Dec 2023 · 6 mos</div>
+        </div>
+        <div class="timeline-row-dot" aria-hidden="true"><div></div></div>
+        <div class="card-col">
+          <div class="card-wrapper">
+            <div class="experience-card right">
+              <h2>Student Staff Partner</h2>
+              <h4>The University of Queensland</h4>
+              <ul>
+                <li>Researched faculty students' experiences through interviews, focus groups, and surveys.</li>
+                <li>Investigated ways to improve student belongingness within the EAIT student experience.</li>
+                <li>Presented an action plan for staff to act upon, including event redesign and advertising.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 6: LEFT -->
+      <div class="timeline-row left">
+        <div class="card-col">
+          <div class="card-wrapper">
+            <div class="experience-card left">
+              <h2>Get Set Mentor</h2>
+              <h4>The University of Queensland</h4>
+              <ul>
+                <li>Conducted weekly meetings for new students seeking advice on navigating university life.</li>
+                <li>Orchestrated campus events to help students adjust and connect with new peers.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="timeline-row-dot" aria-hidden="true"><div></div></div>
+        <div class="date-col">
+          <div class="date-pill">Jun 2023 – Dec 2023 · 6 mos</div>
+        </div>
+      </div>
+
+      <!-- Row 7: RIGHT -->
+      <div class="timeline-row right">
+        <div class="date-col">
+          <div class="date-pill">2021 – 2024 · 3 yrs</div>
+        </div>
+        <div class="timeline-row-dot" aria-hidden="true"><div></div></div>
+        <div class="card-col">
+          <div class="card-wrapper">
+            <div class="experience-card right">
+              <h2>Retail Team Member</h2>
+              <h4>Coles</h4>
+              <ul>
+                <li>Completed daily tasks by assessing priorities and efficiently allocating store resources.</li>
+                <li>Cultivated team-building, quick problem-solving, and communication skills among coworkers.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── Volunteering ───────────────────────────────────────────────── -->
+  <section id="volunteering">
+    <div class="stem-row">
+      <div class="section-stem" style="--stem-h:130px" aria-hidden="true">
+        <div class="stem-dot"></div>
+        <div class="stem-line"></div>
+      </div>
+      <div class="stem-content">
+        <h1 class="section-heading">Volunteering.</h1>
+        <p class="section-lead">
+          Beyond my technical experience, I'm committed to giving back to my communities through active engagement and volunteer work.
+        </p>
+      </div>
+    </div>
+    <div class="volunteer-grid">
+      <div class="volunteer-card">
+        <div class="volunteer-header">
+          <h2>Street Groove Dance Society</h2>
+          <img src="assets/orgs/StreetGroove.png" alt="Street Groove Dance Society" width="56" height="56">
+        </div>
+        <div class="volunteer-role">
+          <h4>Marketing Executive</h4>
+          <h4>Nov 2024 – Nov 2025</h4>
+        </div>
+        <div class="volunteer-role">
+          <h4>Class Manager</h4>
+          <h4>Jul 2023 – Nov 2024</h4>
+        </div>
+        <ul>
+          <li>Developed schedules, selected dance styles, and handled overall class management for members.</li>
+          <li>Managed contracts for teachers and studios, ensuring smooth day-to-day operations.</li>
+          <li>Planned and executed special events to enhance member engagement and community building.</li>
+        </ul>
+      </div>
+      <div class="volunteer-card">
+        <div class="volunteer-header">
+          <h2>Brisbane-Asian Student Association</h2>
+          <img src="assets/orgs/BSA.png" alt="Brisbane-Asian Student Association" width="56" height="56">
+        </div>
+        <div class="volunteer-role">
+          <h4>Events Committee Member</h4>
+          <h4>Jan 2024 – Nov 2024</h4>
+        </div>
+        <ul>
+          <li>Oversaw event management: logistics, scheduling, and coordination with vendors and participants.</li>
+          <li>Focused on memorable experiences that fostered community engagement and member satisfaction.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Projects ───────────────────────────────────────────────────── -->
+  <section id="projects">
+    <div class="stem-row">
+      <div class="section-stem" style="--stem-h:160px" aria-hidden="true">
+        <div class="stem-dot"></div>
+        <div class="stem-line"></div>
+      </div>
+      <div class="stem-content">
+        <h1 class="section-heading">Projects.</h1>
+        <p class="section-lead">
+          In my spare time I work on coding projects to sharpen my skills — from personal passion projects to real-world applications — exploring new technologies and building practical solutions.
+        </p>
+      </div>
+    </div>
+
+    <!-- NDIS: image left, info right; laptop so no border -->
+    <div class="project-card">
+      <a href="https://ndis.project.uq.edu.au/" class="project-media">
+        <img src="assets/projects/laptop.png" alt="NDIS Appeals Database" class="project-img no-frame">
+      </a>
+      <div class="project-info">
+        <a href="https://ndis.project.uq.edu.au/"><h3>NDIS Appeals Database</h3></a>
+        <p>A pro bono project for Queensland Advocacy for Inclusion, collecting NDIS Appeals case data from 2014 to today. Enables comprehensive analysis of appeal outcomes to the Administrative Review Tribunal.</p>
+        <div class="tag-row">
+          <span class="tag framework">CodeIgniter</span>
+          <span class="tag software">Front-End Development</span>
+          <span class="tag software">UX/UI Design</span>
+          <span class="tag language">PHP</span>
+          <span class="tag language">HTML</span>
+          <span class="tag language">CSS</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="project-divider"><span></span><span class="div-dot">&bull;</span><span></span></div>
+
+    <!-- Sleepless Violin: info left, image right -->
+    <div class="project-card reverse">
+      <div class="project-info">
+        <a href="https://www.sleeplessviolin.com/"><h3>Sleepless Violin</h3></a>
+        <p>An online portfolio for a classical musician to showcase performances and experience. Polished, minimalist aesthetic aligned with the client's vision and a seamless user experience.</p>
+        <div class="tag-row">
+          <span class="tag language">CSS</span>
+          <span class="tag software">Front-End Development</span>
+          <span class="tag framework">Freelance</span>
+          <span class="tag language">HTML</span>
+        </div>
+        <a href="https://github.com/Krisna-Bou/Sleepless-Violin" class="github-link">
+          <img src="assets/icons/github-dark.png" alt="GitHub" width="30">
+        </a>
+      </div>
+      <a href="https://www.sleeplessviolin.com/" class="project-media">
+        <img src="assets/projects/SleeplessViolin.png" alt="Sleepless Violin" class="project-img framed">
+      </a>
+    </div>
+
+    <div class="project-divider"><span></span><span class="div-dot">&bull;</span><span></span></div>
+
+    <!-- Project Display: image left, info right -->
+    <div class="project-card">
+      <a href="https://reit4841-krisna-bou.uqcloud.net/Project-Display/" class="project-media">
+        <img src="assets/projects/Project-Display.png" alt="Project Display System" class="project-img framed">
+      </a>
+      <div class="project-info">
+        <a href="https://reit4841-krisna-bou.uqcloud.net/Project-Display/"><h3>Project Display System</h3></a>
+        <p>Honours thesis project: a project display and resource management system for UQ, deployed to UQCloud to display projects within the School of Electrical Engineering and Computer Science.</p>
+        <div class="tag-row">
+          <span class="tag language">PHP</span>
+          <span class="tag software">Front-End Development</span>
+          <span class="tag software">UX/UI Design</span>
+          <span class="tag language">CSS</span>
+          <span class="tag framework">CodeIgniter</span>
+          <span class="tag framework">Thesis Project</span>
+        </div>
+        <a href="https://github.com/Krisna-Bou/Project-Display-System" class="github-link">
+          <img src="assets/icons/github-dark.png" alt="GitHub" width="30">
+        </a>
+      </div>
+    </div>
+
+    <div class="project-divider"><span></span><span class="div-dot">&bull;</span><span></span></div>
+
+    <!-- Baiae: info left, image right -->
+    <div class="project-card reverse">
+      <div class="project-info">
+        <a href="https://krisna-bou.github.io/Baiae_Imperiali/"><h3>Baiae Imperiali</h3></a>
+        <p>A web application centred on an ancient Roman resort, offering a booking system for restaurants and hotels alongside informative content on Roman history and culture.</p>
+        <div class="tag-row">
+          <span class="tag language">CSS</span>
+          <span class="tag software">Front-End Development</span>
+          <span class="tag language">HTML</span>
+        </div>
+        <a href="https://github.com/Krisna-Bou/Baiae_Imperiali" class="github-link">
+          <img src="assets/icons/github-dark.png" alt="GitHub" width="30">
+        </a>
+      </div>
+      <a href="https://krisna-bou.github.io/Baiae_Imperiali/" class="project-media">
+        <img src="assets/projects/Baiae.png" alt="Baiae Imperiali" class="project-img framed">
+      </a>
+    </div>
+
+    <div class="project-divider"><span></span><span class="div-dot">&bull;</span><span></span></div>
+
+    <!-- Mini projects -->
+    <div class="mini-projects">
+      <div class="mini-project">
+        <a href="https://github.com/Krisna-Bou/Pigeon-E2EE-Messenger"><h3>Pigeon E2EE Messenger</h3></a>
+        <p>A secure end-to-end encrypted instant messaging application with client and server subsystems (pigeon-client / pigeon-server).</p>
+        <div class="tag-row">
+          <span class="tag language">Python</span>
+          <span class="tag software">Software Architecture</span>
+          <span class="tag software">AWS</span>
+          <span class="tag framework">HTTP</span>
+          <span class="tag framework">Docker</span>
+        </div>
+        <a href="https://github.com/Krisna-Bou/Pigeon-E2EE-Messenger" class="github-link">
+          <img src="assets/icons/github-dark.png" alt="GitHub" width="30">
+        </a>
+      </div>
+      <div class="mini-project">
+        <a href="https://github.com/Krisna-Bou/SpamOverflow"><h3>Spam Overflow</h3></a>
+        <p>An AWS-hosted application for detecting spam emails within a system, assessing AWS metrics to determine anomalies and unusual behavior.</p>
+        <div class="tag-row">
+          <span class="tag software">Terraform</span>
+          <span class="tag framework">REST APIs</span>
+          <span class="tag software">AWS</span>
+          <span class="tag language">ECS</span>
+          <span class="tag framework">Docker</span>
+        </div>
+        <a href="https://github.com/Krisna-Bou/SpamOverflow" class="github-link">
+          <img src="assets/icons/github-dark.png" alt="GitHub" width="30">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact ────────────────────────────────────────────────────── -->
+  <section id="vanta-contact">
+    <div class="contact-inner">
+      <div class="contact-panel">
+        <h1>Contact.</h1>
+        <form id="contact-form">
+          <label>
+            <span>Your Name</span>
+            <input type="text" name="name" placeholder="What's your name?" required>
+          </label>
+          <label>
+            <span>Your Email</span>
+            <input type="email" name="email" placeholder="How do I contact you?" required>
+          </label>
+          <label>
+            <span>Your Message</span>
+            <textarea name="message" placeholder="Send me a message!" rows="6" required></textarea>
+          </label>
+          <button type="submit" class="submit-btn">Submit</button>
+          <div id="form-status"></div>
+        </form>
+        <div class="contact-socials">
+          <a href="https://www.linkedin.com/in/krisna-bou/">
+            <img src="assets/icons/linkedin.png" alt="LinkedIn" width="38" height="38">
+          </a>
+          <a href="https://github.com/Krisna-Bou">
+            <img src="assets/icons/github.png" alt="GitHub" width="38" height="38">
+          </a>
+          <a href="mailto:krisna.bou@outlook.com">
+            <img src="assets/icons/mail.png" alt="Email" width="38" height="38">
+          </a>
+        </div>
+      </div>
+      <div class="contact-photo">
+        <img class="float-photo" src="assets/photo/Krisna.jpg" alt="Krisna Bou">
+      </div>
+    </div>
+  </section>
+
+  <script src="main.js"></script>
 </body>
 </html>
