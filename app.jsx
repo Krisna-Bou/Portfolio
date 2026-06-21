@@ -7,6 +7,12 @@ function App() {
     <div>
       <div style={{ position: 'fixed', top: 0, left: 0, width: '100%', zIndex: 100 }}>
         <NavBarC
+          links={[
+            { label: 'About',      href: '#about' },
+            { label: 'Experience', href: '#experience' },
+            { label: 'Projects',   href: '#projects' },
+            { label: 'Contact',    href: '#vanta-contact' },
+          ]}
           socials={[
             { icon: 'assets/icons/linkedin.png', href: 'https://www.linkedin.com/in/krisna-bou/', label: 'LinkedIn' },
             { icon: 'assets/icons/github.png', href: 'https://github.com/Krisna-Bou', label: 'GitHub' },

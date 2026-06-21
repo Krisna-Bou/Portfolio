@@ -2,6 +2,16 @@
 window.PORTFOLIO_DATA = {
   experiences: [
     {
+      role: 'Associate Technical Consultant',
+      org: 'Quorum Software',
+      date: 'Jan 2026 – Present · 6 mos',
+      bullets: [
+        'Delivered technical consulting services for Energy Components (EC) implementations across oil and gas clients.',
+        'Collaborated with stakeholders to gather requirements and translate them into system configurations.',
+        'Supported end-to-end deployment and validation of client solutions to ensure quality and compliance.',
+      ],
+    },
+    {
       role: 'Technology Intern (Test Coordinator)',
       org: 'Quorum Software',
       date: 'Jul 2025 – Present \u00b7 9 mos',
