@@ -24,10 +24,16 @@
     if (!window.VANTA || !window.VANTA.NET) {
       return setTimeout(initVanta, 100);
     }
+    var w = window.innerWidth;
+    var dense = w < 600
+      ? { points: 6.0, spacing: 18.0, maxDistance: 18.0 }
+      : w < 1000
+      ? { points: 8.0, spacing: 18.0, maxDistance: 20.0 }
+      : { points: 10.0, spacing: 20.0, maxDistance: 23.0 };
     ['#vanta-canvas', '#contact-canvas'].forEach(function (sel) {
       var node = document.querySelector(sel);
       if (!node || node.__vanta) return;
-      var opts = Object.assign({ el: sel }, VANTA_OPTS);
+      var opts = Object.assign({ el: sel }, VANTA_OPTS, dense);
       node.__vanta = window.VANTA.NET(opts);
       instances.push(node);
     });
