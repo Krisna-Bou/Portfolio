@@ -1598,7 +1598,7 @@ h1.cover-heading-title + .section-label { color: var(--brand-soft); }
 .site-footer {
   background: var(--ink);
   color: #fff;
-  padding: 56px clamp(20px, 5vw, 64px) 28px;
+  padding: 56px clamp(20px, 5vw, 64px) 100px;
   font-family: var(--mono);
 }
 .footer-inner {
@@ -1903,3 +1903,9 @@ body { overflow-x: clip; }
 
 /* Keep the Vanta sections within the viewport on every screen */
 #vanta-canvas, #contact-canvas { max-width: 100vw; }
+
+/* Images carry intrinsic width/height attrs (reserves space, prevents layout
+   shift / scroll overshoot). height:auto makes the attrs supply only the
+   aspect-ratio so CSS width still controls rendered size. Class rules that set
+   an explicit height (icons, logos) still win on specificity. */
+img { height: auto; }

@@ -43,13 +43,12 @@
     [150, 400, 900, 1600, 2600].forEach(function (t) {
       setTimeout(resizeVanta, t);
     });
-    // Stop the drifting MOTION once the net has settled, but keep the render
-    // loop alive so the dots stay painted (nooping the whole loop blanks the
-    // offscreen contact canvas the moment WebGL swaps buffers).
-    setTimeout(freezeVanta, 2700);
+    // Warm the offscreen Contact net so it's spread out (not clustered) the
+    // moment it scrolls into view. Motion is NOT stopped — both nets keep drifting.
+    setTimeout(warmVanta, 2700);
   }
 
-  function freezeVanta() {
+  function warmVanta() {
     instances.forEach(function (node) {
       var v = node.__vanta;
       if (!v) return;
@@ -64,14 +63,11 @@
           try { update.call(v); } catch (e) { break; }
         }
       }
-      // …paint that warmed-up frame once…
+      // …paint that warmed-up frame once. The animation loop keeps running, so
+      // the net stays in motion on both hero and contact.
       if (v.renderer && v.scene && v.camera) {
         try { v.renderer.render(v.scene, v.camera); } catch (e) {}
       }
-      // …then neutralise only the per-frame motion. The animation loop keeps
-      // running and re-rendering this static frame, so the network is motionless
-      // yet always visible.
-      v.onUpdate = function () {};
     });
   }
 
@@ -141,22 +137,39 @@
 
   function scrollToTarget(el) {
     var sc = scroller();
-    var top = el === 'top'
-      ? 0
-      : el.getBoundingClientRect().top + sc.scrollTop - headerOffset();
-    top = Math.max(0, top);
-    if (prefersReduced()) { sc.scrollTop = top; return; }
+    // Live destination: recomputed each frame so late layout shifts (images
+    // loading, Vanta resizes) can't make the nav over- or undershoot.
+    function destTop() {
+      if (el === 'top') return 0;
+      var anchor = (el.closest && el.closest('.contact-centre, .contact-item')) || el;
+      var rect = anchor.getBoundingClientRect();
+      var absTop = rect.top + sc.scrollTop;
+      var raw;
+      if (anchor !== el) {
+        // Framed card: vertically center it in the area below the fixed header,
+        // falling back to a small top gap when it's taller than that area.
+        var headH = headerOffset() - 18;
+        var gap = Math.max(16, (sc.clientHeight - headH - rect.height) / 2);
+        raw = absTop - headH - gap;
+      } else {
+        raw = absTop - headerOffset();
+      }
+      var max = sc.scrollHeight - sc.clientHeight;
+      return Math.max(0, Math.min(raw, max));
+    }
+    var dest = destTop();
+    if (prefersReduced()) { sc.scrollTop = dest; return; }
     var start = sc.scrollTop;
-    var dist = top - start;
-    if (Math.abs(dist) < 1) return;
-    var dur = Math.min(900, Math.max(350, Math.abs(dist) * 0.5));
+    if (Math.abs(dest - start) < 1) return;
+    var dur = Math.min(900, Math.max(350, Math.abs(dest - start) * 0.5));
     var t0 = null;
     function ease(p) { return p < 0.5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2; }
     function step(ts) {
       if (t0 === null) t0 = ts;
       var p = Math.min(1, (ts - t0) / dur);
-      sc.scrollTop = start + dist * ease(p);
-      if (p < 1) requestAnimationFrame(step);
+      sc.scrollTop = start + (destTop() - start) * ease(p);
+      if (p < 1) { requestAnimationFrame(step); }
+      else { sc.scrollTop = destTop(); } // exact final landing
     }
     requestAnimationFrame(step);
   }
