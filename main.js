@@ -43,8 +43,9 @@
     [150, 400, 900, 1600, 2600].forEach(function (t) {
       setTimeout(resizeVanta, t);
     });
-    // Freeze the network once it has settled so the background holds completely
-    // still — no drifting motion behind the hero / contact while scrolling.
+    // Stop the drifting MOTION once the net has settled, but keep the render
+    // loop alive so the dots stay painted (nooping the whole loop blanks the
+    // offscreen contact canvas the moment WebGL swaps buffers).
     setTimeout(freezeVanta, 2700);
   }
 
@@ -52,10 +53,25 @@
     instances.forEach(function (node) {
       var v = node.__vanta;
       if (!v) return;
-      if (v.req) cancelAnimationFrame(v.req);
-      // Stop the loop from rescheduling itself, so the net stays static.
-      v.animationLoop = function () {};
-      if (typeof v.onUpdate === 'function') v.onUpdate = function () {};
+      // Vanta pauses instances while they're offscreen, so a net that was never
+      // scrolled into view (e.g. Contact) still has its points at their initial
+      // clustered spawn — invisible. Advance the simulation manually so the dots
+      // spread into their settled, visible arrangement regardless of viewport…
+      var proto = Object.getPrototypeOf(v);
+      var update = (typeof v.onUpdate === 'function') ? v.onUpdate : proto.onUpdate;
+      if (typeof update === 'function') {
+        for (var i = 0; i < 220; i++) {
+          try { update.call(v); } catch (e) { break; }
+        }
+      }
+      // …paint that warmed-up frame once…
+      if (v.renderer && v.scene && v.camera) {
+        try { v.renderer.render(v.scene, v.camera); } catch (e) {}
+      }
+      // …then neutralise only the per-frame motion. The animation loop keeps
+      // running and re-rendering this static frame, so the network is motionless
+      // yet always visible.
+      v.onUpdate = function () {};
     });
   }
 
