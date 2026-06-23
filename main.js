@@ -43,6 +43,20 @@
     [150, 400, 900, 1600, 2600].forEach(function (t) {
       setTimeout(resizeVanta, t);
     });
+    // Freeze the network once it has settled so the background holds completely
+    // still — no drifting motion behind the hero / contact while scrolling.
+    setTimeout(freezeVanta, 2700);
+  }
+
+  function freezeVanta() {
+    instances.forEach(function (node) {
+      var v = node.__vanta;
+      if (!v) return;
+      if (v.req) cancelAnimationFrame(v.req);
+      // Stop the loop from rescheduling itself, so the net stays static.
+      v.animationLoop = function () {};
+      if (typeof v.onUpdate === 'function') v.onUpdate = function () {};
+    });
   }
 
   function resizeVanta() {
@@ -88,13 +102,15 @@
   }
 
   // ---- Smooth in-page navigation ----
-  // The <body> is the scroll container (position:fixed; overflow-y:auto), so
-  // native hash-link jumping doesn't move it. We scroll it ourselves, offset
-  // by the fixed header height, with a smooth animation.
+  // The page scrolls on the ROOT (document.scrollingElement === <html>). We
+  // animate it ourselves so we can offset by the fixed header height. Fall back
+  // to whichever element is actually the scroll container.
   function scroller() {
+    var se = document.scrollingElement || document.documentElement;
+    if (se && se.scrollHeight > se.clientHeight + 2) return se;
     var b = document.body;
     if (b && b.scrollHeight > b.clientHeight + 2) return b;
-    return document.scrollingElement || document.documentElement || b;
+    return se || b;
   }
 
   function headerOffset() {
@@ -161,13 +177,15 @@
     var bar = document.createElement('div');
     bar.id = 'scroll-progress';
     document.body.appendChild(bar);
-    var sc = scroller();
     function update() {
+      var sc = scroller();
       var max = sc.scrollHeight - sc.clientHeight;
       var pct = max > 0 ? (sc.scrollTop / max) * 100 : 0;
       bar.style.width = pct + '%';
     }
-    sc.addEventListener('scroll', update, { passive: true });
+    // Root-element scrolling dispatches its scroll event on window/document,
+    // not on the <html> node, so listen on window.
+    window.addEventListener('scroll', update, { passive: true });
     window.addEventListener('resize', update);
     update();
   }
